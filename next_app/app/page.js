@@ -1,9 +1,15 @@
-import React from 'react'
+import React from "react";
+import Link from "next/link";
 
-const page = () => {
+const Home = () => {
   return (
-    <h1 className="text-6xl">Page</h1>
-  )
-}
+    <div>
+      <h1 className="text-5xl mb-8 font-bold">Home</h1>
+      <Link href="counter" className="btn btn-accent">
+        Start
+      </Link>
+    </div>
+  );
+};
 
-export default page
+export default Home;
