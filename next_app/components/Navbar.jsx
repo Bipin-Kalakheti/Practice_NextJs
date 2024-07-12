@@ -5,6 +5,7 @@ const Links = [
   { href: "/bar", text: "Bar" },
   { href: "/todo-list", text: "Todo List" },
   { href: "/query", text: "Query" },
+  { href: "/prisma", text: "Prisma" },
 ];
 
 const Navbar = () => {
