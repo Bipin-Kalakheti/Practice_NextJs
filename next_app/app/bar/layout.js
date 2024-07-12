@@ -1,14 +1,17 @@
 import React from "react";
+import Image from "next/image";
 
 const BarLayout = ({ children }) => {
   return (
     <div>
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row">
-          <img
+          <Image
             src="https://b.zmtcdn.com/data/collections/c67357df1d79854b624355b0272c5f28_1674826727.jpg"
             alt="Image of Bar"
             className="max-w-full lg:max-w-sm rounded-lg shadow-lg"
+            width={400}
+            height={400}
           />
           <div className="">
             <h1 className="text-2xl font-bold mb-4 lg:text-5xl">
