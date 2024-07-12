@@ -23,12 +23,13 @@ export const createTask = async (prevState, formData) => {
 
     revalidatePath("/todo-list");
 
-    return { message: "Task created successfully!" };
+    return { message: "Task created successfully!", status: 200 };
   } catch (error) {
     return {
       message:
         error.errors[0]?.message ||
         "An error occurred while creating the task.",
+      status: 400,
     };
   }
 };
