@@ -13,7 +13,7 @@ const Counter = () => {
       >
         Increment
       </button>
-      <button className="btn btn-secondary m-2" onClick={() => setCount(0)}>
+      <button className="btn btn-accent m-2" onClick={() => setCount(0)}>
         Reset
       </button>
       <button
