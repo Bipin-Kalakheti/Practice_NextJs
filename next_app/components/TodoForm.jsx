@@ -1,9 +1,32 @@
+"use client";
 import React from "react";
 import { createTask } from "@/utils/actions";
+import { useFormStatus, useFormState } from "react-dom";
+
+const initialState = {
+  message: null,
+};
+
+const SubmitBtn = () => {
+  const { pending } = useFormStatus();
+  return (
+    <button
+      type="submit"
+      className="btn btn-primary join-item"
+      disabled={pending}
+    >
+      {pending ? "Creating..." : "Create Task"}
+    </button>
+  );
+};
 
 const TodoForm = () => {
+  const [state, formAction] = useFormState(createTask, initialState);
   return (
-    <form action={createTask}>
+    <form action={formAction}>
+      {state.message ? (
+        <p className="text-500 mb-2">{state.message}</p>
+      ) : null}
       <div className="join w-full mb-8">
         <input
           type="text"
@@ -12,9 +35,7 @@ const TodoForm = () => {
           name="content"
           required
         />
-        <button type="submit" className="btn btn-primary join-item">
-          Create Task
-        </button>
+        <SubmitBtn />
       </div>
     </form>
   );

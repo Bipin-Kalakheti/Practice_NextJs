@@ -4,15 +4,23 @@ import { revalidatePath } from "next/cache";
 
 import { redirect } from "next/navigation";
 
-export const createTask = async (formData) => {
+export const createTask = async (prevState, formData) => {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
   const content = formData.get("content");
 
-  await prisma.task.create({
-    data: {
-      content,
-    },
-  });
-  revalidatePath("/todo-list");
+  try {
+    await prisma.task.create({
+      data: {
+        content,
+      },
+    });
+
+    revalidatePath("/todo-list");
+
+    return { message: "Task created successfully!" };
+  } catch (error) {
+    return { message: "An error occurred while creating the task." };
+  }
 };
 
 export const getAllTasks = async () => {
@@ -52,5 +60,4 @@ export const editTask = async (formData) => {
   });
 
   redirect("/todo-list");
- 
 };
