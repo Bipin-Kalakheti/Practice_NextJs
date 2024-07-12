@@ -22,11 +22,10 @@ const SubmitBtn = () => {
 
 const TodoForm = () => {
   const [state, formAction] = useFormState(createTask, initialState);
+
   return (
     <form action={formAction}>
-      {state.message ? (
-        <p className="text-500 mb-2">{state.message}</p>
-      ) : null}
+      {state.message ? <p className="text-500 mb-2">{state.message}</p> : null}
       <div className="join w-full mb-8">
         <input
           type="text"
