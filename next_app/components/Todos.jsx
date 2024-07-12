@@ -2,13 +2,10 @@ import prisma from "@/utils/db";
 import Link from "next/link";
 import React from "react";
 import DeleteForm from "./DeleteForm";
+import { getAllTasks } from "@/utils/actions";
 
 const Todos = async () => {
-  const tasks = await prisma.task.findMany({
-    orderBy: {
-      createdAt: "desc",
-    },
-  });
+  const tasks = await getAllTasks();
 
   if (tasks.length === 0) {
     return (
@@ -31,7 +28,10 @@ const Todos = async () => {
             {task.content}
           </h2>
           <div className="flex gap-6 item-center">
-            <Link href={`/todos/${task.id}`} className="btn btn-accent btn-xs">
+            <Link
+              href={`/todo-list/${task.id}`}
+              className="btn btn-accent btn-xs"
+            >
               edit
             </Link>
             <DeleteForm id={task.id} />
